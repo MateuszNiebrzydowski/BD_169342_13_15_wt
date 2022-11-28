@@ -1,0 +1,43 @@
+Zadanie 1
+
+a) DELETE FROM postac WHERE rodzaj='wiking' AND wiek > 50 AND nazwa != 'Bjorn';
+
+b)  - ALTER TABLE postac MODIFY id_postaci INT;
+    - ALTER TABLE przetwory DROP FOREIGN KEY przetwory_ibfk_1;
+    - ALTER TABLE przetwory DROP FOREIGN KEY przetwory_ibfk_2;
+    - ALTER TABLE walizka DROP FOREIGN KEY walizka_ibfk_1;
+    - ALTER TABLE postac DROP PRIMARY KEY;
+
+Zadanie 2
+
+a) ALTER TABLE postac ADD COLUMN pesel VARCHAR(11) PRIMARY KEY;
+
+b) ALTER TABLE postac MODIFY rodzaj ENUM('wiking', 'ptak', 'kobieta', 'syrena');
+
+c) INSERT INTO postac VALUES (8, 'Gertruda Nieszczera', 'syrena', '2002-02-25', 20, NULL, NULL);
+
+Zadanie 3
+
+a) UPDATE postac SET statek='Kawka' WHERE nazwa LIKE '%a%';
+
+b) UPDATE statek SET max_ladownosc=0.7*max_ladownosc WHERE data_wodowania BETWEEN '1901-01-01' AND '2000-12-31';
+
+Zadanie 4
+
+a) INSERT INTO postac VALUES (9, 'Wąż Loko', NULL, '2022-11-27', 0, NULL, NULL);
+
+b) CREATE TABLE marynarz SELECT * FROM postac WHERE statek IS NOT NULL;
+
+Zadanie 5
+
+a) UPDATE marynarz SET statek = NULL WHERE statek='Kawka';
+
+b) DELETE FROM marynarz WHERE nazwa='Olle';
+
+c) DELETE from statek;
+
+d) DROP TABLE statek;
+
+e) CREATE TABLE zwierz (id INT PRIMARY KEY AUTO_INCREMENT, nazwa VARCHAR(20), wiek INT);
+
+f) INSERT INTO zwierz SELECT id_postaci, nazwa, wiek FROM postac WHERE rodzaj='ptak' OR rodzaj IS NULL;
